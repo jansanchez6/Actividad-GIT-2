@@ -47,6 +47,6 @@ public class MatrizApp {
         // Si el número no se encuentra en la matriz
         if (!encontrado) {
             System.out.println("El número " + numeroBuscado + " no se encuentra en la matriz.");
-        }
+        } 
     }
 }
