@@ -5,57 +5,36 @@ import java.util.Scanner;
 public class MatrizApp {
 
     public static void main(String[] args) {
-        // Crear la matriz de 5x5 con números aleatorios entre 1 y 100
-        int[][] matriz = generarMatriz(5, 5);
+    	  // Crear la matriz 5x5 de números aleatorios entre 1 y 100
+        int[][] matriz = new int[5][5];
 
-        // Mostrar la matriz en consola
-        mostrarMatriz(matriz);
-
-        // Permitir al usuario buscar un número en la matriz
-        buscarNumero(matriz);
-
-        // (Opcional) Calcular y mostrar la suma de todos los números en la matriz
-        int suma = calcularSuma(matriz);
-        System.out.println("La suma de todos los números en la matriz es: " + suma);
-    } 
-
-    // Método para generar una matriz de tamaño filas x columnas con números aleatorios entre 1 y 100
-    public static int[][] generarMatriz(int filas, int columnas) {
-        int[][] matriz = new int[filas][columnas];
-        Random random = new Random();
-        
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                matriz[i][j] = random.nextInt(100) + 1; // Números aleatorios entre 1 y 100
+        // Llenar la matriz con números aleatorios
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                matriz[i][j] = (int) (Math.random() * 100) + 1; // Números aleatorios entre 1 y 100
             }
         }
-        
-        return matriz;
-    }
 
-    // Método para mostrar la matriz en consola
-    public static void mostrarMatriz(int[][] matriz) {
-        System.out.println("Matriz generada:");
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print(matriz[i][j] + "\t");
+        // Mostrar la matriz en la consola
+        System.out.println("Matriz 5x5 generada con números aleatorios entre 1 y 100:");
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                System.out.print(matriz[i][j] + "\t"); // Imprimir cada valor seguido de una tabulación
             }
-            System.out.println();
+            System.out.println(); // Salto de línea después de cada fila
         }
-    }
 
-    // Método para buscar un número en la matriz
-    public static void buscarNumero(int[][] matriz) {
+        // Solicitar al usuario un número para buscar en la matriz
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Introduce un número para buscar en la matriz: ");
+        System.out.print("Ingrese un número para buscar en la matriz: ");
         int numeroBuscado = scanner.nextInt();
 
+        // Buscar el número en la matriz
         boolean encontrado = false;
-
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
                 if (matriz[i][j] == numeroBuscado) {
-                    System.out.println("Número encontrado en la posición: Fila " + (i + 1) + ", Columna " + (j + 1));
+                    System.out.println("El número " + numeroBuscado + " se encuentra en la posición: Fila " + (i + 1) + ", Columna " + (j + 1));
                     encontrado = true;
                     break;
                 }
@@ -65,19 +44,9 @@ public class MatrizApp {
             }
         }
 
+        // Si el número no se encuentra en la matriz
         if (!encontrado) {
-            System.out.println("El número no se encuentra en la matriz.");
+            System.out.println("El número " + numeroBuscado + " no se encuentra en la matriz.");
         }
-    }
-
-    // Método para calcular la suma de todos los números en la matriz
-    public static int calcularSuma(int[][] matriz) {
-        int suma = 0;
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                suma += matriz[i][j];
-            }
-        }
-        return suma;
     }
 }
